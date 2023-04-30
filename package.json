@@ -1,0 +1,35 @@
+{
+  "name": "@silicon-soldier/windows-psapi",
+  "version": "0.1.0",
+  "description": "High-level interface over Windows' Process Status API (Win32::System::ProcessStatus and psapi.h).",
+  "main": "lib/index.node",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "cd crate && cargo-cp-artifact --artifact cdylib __unnamed ../lib/index.node -- cargo build --message-format=json-render-diagnostics",
+    "build-debug": "npm run build --",
+    "build-release": "npm run build -- --release",
+    "install": "npm run build-release",
+    "test": "cargo test"
+  },
+  "author": "Jordan Mele <SiliconSoldier@outlook.com.au> (https://djmm.me/)",
+  "license": "MIT",
+  "devDependencies": {
+    "cargo-cp-artifact": "^0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silic0nS0ldier/windows-psapi-nodejs.git"
+  },
+  "keywords": [
+    "psapi",
+    "pidpath",
+    "windows"
+  ],
+  "bugs": {
+    "url": "https://github.com/Silic0nS0ldier/windows-psapi-nodejs/issues"
+  },
+  "homepage": "https://github.com/Silic0nS0ldier/windows-psapi-nodejs#readme",
+  "files": [
+    "lib/**"
+  ]
+}

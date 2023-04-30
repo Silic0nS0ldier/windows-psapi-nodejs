@@ -53,3 +53,8 @@ The crate `windows@0.48.0` provides projection of the Windows API to Rust. This 
 | `InitializeProcessForWsWatch` | ✗ |
 | `QueryWorkingSet` | ✗ |
 | `QueryWorkingSetEx` | ✗ |
+
+## See Also
+
+- [@silicon-soldier/darwin-libproc](https://github.com/Silic0nS0ldier/darwin-libproc-nodejs) for macOS
+- `proc/{pid}/` for Linux

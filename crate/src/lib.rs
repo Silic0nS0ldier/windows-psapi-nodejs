@@ -10,11 +10,18 @@ fn pid_path(mut cx: FunctionContext) -> JsResult<JsString> {
 
     unsafe {
         // Acquire process handle
-        let process_handle = windows::Win32::System::Threading::OpenProcess(
+        let process_handle_result = windows::Win32::System::Threading::OpenProcess(
             windows::Win32::System::Threading::PROCESS_QUERY_INFORMATION|windows::Win32::System::Threading::PROCESS_VM_READ,
             false,
             pid as u32,
-        ).expect("nope");
+        );
+
+        if process_handle_result.is_err() {
+            let err = process_handle_result.unwrap_err();
+            return cx.throw_error(err.to_string());
+        }
+
+        let process_handle = process_handle_result.unwrap();
 
         pid_path_len = windows::Win32::System::ProcessStatus::GetModuleFileNameExA(process_handle, None, &mut filename);
 
